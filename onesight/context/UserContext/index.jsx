@@ -18,12 +18,16 @@ const UserProvider = ({ children }) => {
   const updateUser = (data) => {
     const userIndex = users.findIndex((user) => user.id === userId);
 
-    users[userIndex] = { ...users[userIndex], ...data };
+    const emailIsAlreadyInUse = users.some((user) => user.email === data.email);
 
-    toggleModalVisibility();
-    toast.success("User updated sucessfully", {
-      autoClose: 2000,
-    });
+    if (users[userIndex].email !== data.email && emailIsAlreadyInUse) {
+      toast.error("This email is already in use");
+    } else {
+      users[userIndex] = { ...users[userIndex], ...data };
+
+      toggleModalVisibility();
+      toast.success("User updated sucessfully");
+    }
   };
 
   const deleteUser = () => {
@@ -32,9 +36,7 @@ const UserProvider = ({ children }) => {
     users.splice(userIndex, 1);
 
     toggleModalVisibility();
-    toast.success("User deleted sucessfully", {
-      autoClose: 2000,
-    });
+    toast.success("User deleted sucessfully");
   };
 
   return (

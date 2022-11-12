@@ -11,9 +11,7 @@ const AuthProvider = ({ children }) => {
     const emailIsAlreadyInUse = users.find((user) => user.email === data.email);
 
     if (emailIsAlreadyInUse) {
-      toast.error("This email is already in use", {
-        autoClose: 2000,
-      });
+      toast.error("This email is already in use");
     } else {
       const { name, email, password, contact, isAdm } = data;
 
