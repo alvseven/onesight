@@ -1,0 +1,95 @@
+.modalInner
+    width: 100vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    background-color: rgba(180, 166, 166, 0.2)
+
+.modalContainer
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 450px
+    height: 80%
+    position: fixed
+    top: 15%
+    left: calc(50% - 225px)
+    background: linear-gradient(90deg, rgba(12,12,75,1) 6%, rgba(9,10,62,1) 85%)
+    border-radius: 18px
+
+.closeModalContainer
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    margin: 0.7rem 0
+
+    h3
+        font-family: "Nunito", sans-serif
+        font-size: 1.3rem
+        color: #FFFFFF
+        font-weight: 700
+
+    button
+        color: #d3e0f0
+        border: 1px double aqua
+        border-radius: 50%
+        background: #212627
+        text-align: center
+        &:hover
+            transition: 0.5s
+            background: #d3e0f0
+            color: #212627
+
+        svg
+            padding: 0.3rem 0 0.1rem 0
+
+.form
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+    gap: 18px
+    padding: 2rem
+    width: 100%
+
+    label
+        font-family: 'Roboto', sans-serif
+        font-size: 1rem
+        color: #d3e0f0 
+        font-weight: 500
+
+.formInput
+    width: 90%
+    height: 22px
+    padding-left: 12px
+    font-family: 'Inter', sans-serif
+    background: #d3e0f0
+    border-radius: 8px
+    outline: 0
+
+
+.buttonsContainer
+    display: flex
+    align-items: center
+    justify-content: space-around
+    gap: 14px
+    width: 90%
+    margin-top: 1rem
+
+.submitButton
+    font-family: "Inter", sans-serif
+    width: 45%
+    height: 2rem
+    border-radius: 8px
+    border: 1px solid #256EFF
+    background: #000
+    color: #256EFF
+    margin: auto
+    &:hover
+        transition: 0.7s
+        border: 1px solid #000
+        color: #000
+        background: #256EFF
