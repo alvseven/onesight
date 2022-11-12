@@ -5,6 +5,7 @@
     top: 0
     left: 0
     background-color: rgba(180, 166, 166, 0.2)
+    backdrop-filter: blur(2px)
 
 .modalContainer
     display: flex
@@ -74,22 +75,23 @@
 .buttonsContainer
     display: flex
     align-items: center
-    justify-content: space-around
-    gap: 14px
-    width: 90%
+    justify-content: space-between
+    gap: 12px
+    width: 95%
     margin-top: 1rem
+
 
 .submitButton
     font-family: "Inter", sans-serif
     width: 45%
     height: 2rem
     border-radius: 8px
-    border: 1px solid #256EFF
-    background: #000
-    color: #256EFF
+    border: 2px solid  #E5E7E6
+    background: #256EFF
+    color: #E5E7E6
     margin: auto
     &:hover
         transition: 0.7s
-        border: 1px solid #000
+        border: 1px double #000
         color: #000
         background: #256EFF
