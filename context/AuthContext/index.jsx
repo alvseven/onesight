@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 import { toast } from "react-toastify";
 
-import { users } from "../../utils/users";
+import { users } from "../../../utils/users";
 
 export const AuthContext = createContext({});
 
