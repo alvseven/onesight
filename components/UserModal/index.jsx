@@ -20,6 +20,9 @@ const UserModal = () => {
 
   const { name, email, contact, createdAt, updatedAt } = user;
 
+  const normalizedCreatedAt = new Date(createdAt).toLocaleDateString("pt-br");
+  const normalizedUpdatedAt = new Date(updatedAt).toLocaleDateString("pt-br");
+
   const {
     register,
     handleSubmit,
@@ -81,7 +84,7 @@ const UserModal = () => {
             className={styles.formInput}
             type="tel"
             id="createdAt"
-            defaultValue={createdAt}
+            defaultValue={normalizedCreatedAt}
             disabled
           />
 
@@ -90,7 +93,7 @@ const UserModal = () => {
             className={styles.formInput}
             type="tel"
             id="updatedAt"
-            defaultValue={updatedAt}
+            defaultValue={normalizedCreatedAt}
             disabled
           />
 
