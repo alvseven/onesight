@@ -56,7 +56,9 @@ const UserProvider = ({ children }) => {
       await removeUser({ id: userId });
       toggleModalVisibility();
       toast.success("User deleted sucessfully");
-    } catch (err) {}
+    } catch (err) {
+      toast.error("Oops! Something went wrong");
+    }
   };
 
   return (
