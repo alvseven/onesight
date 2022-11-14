@@ -1,16 +1,14 @@
-import Link from "next/link";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useAuthContext } from "../../context";
+import { useUserContext } from "../../context";
 
 import { signUpSchema } from "../../schemas";
 
 import styles from "./styles.module.sass";
 
 const SignUpForm = () => {
-  const { registerUser } = useAuthContext();
+  const { registerUser } = useUserContext();
 
   const {
     register,
@@ -72,12 +70,6 @@ const SignUpForm = () => {
           {...register("contact")}
         />
         <span>{errors.contact?.message} </span>
-        <div className={styles.admCheck}>
-          <label htmlFor="administrator">Administrator account?</label>
-          <input type="checkbox" id="administrator" {...register("isAdm")} />
-        </div>
-
-        <Link href="/">Already have an account? Sign in</Link>
         <button type="submit">Sign up</button>
       </form>
     </main>

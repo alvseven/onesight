@@ -1,12 +1,15 @@
-import { createContext, useState } from "react";
+import { useRouter } from "next/router";
+
+import { createContext, useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 
-import { users } from "../../../utils/users";
+import { createUser, editUser, listUsers, removeUser } from "../../requests";
 
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
+  const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -15,36 +18,55 @@ const UserProvider = ({ children }) => {
     setUserId(id);
   };
 
-  const updateUser = (data) => {
-    const userIndex = users.findIndex((user) => user.id === userId);
+  useEffect(() => {
+    async function getUsers() {
+      try {
+        const allUsers = await listUsers();
+        setUsers(allUsers);
+      } catch (err) {}
+    }
 
-    const emailIsAlreadyInUse = users.some((user) => user.email === data.email);
+    getUsers();
+  }, [users]);
 
-    if (users[userIndex].email !== data.email && emailIsAlreadyInUse) {
-      toast.error("This email is already in use");
-    } else {
-      users[userIndex] = { ...users[userIndex], ...data };
+  const router = useRouter();
 
-      toggleModalVisibility();
-      toast.success("User updated sucessfully");
+  const registerUser = async (data) => {
+    try {
+      await createUser(data);
+      toast.success("User created sucessfully");
+      router.push("/");
+    } catch (err) {
+      toast.error("Email is already in use");
     }
   };
 
-  const deleteUser = () => {
-    const userIndex = users.findIndex((user) => user.id === userId);
+  const updateUser = async (data) => {
+    try {
+      await editUser(userId, data);
+      toggleModalVisibility();
+      toast.success("User updated sucessfully");
+    } catch (err) {
+      toast.error("Oops! Something went wrong");
+    }
+  };
 
-    users.splice(userIndex, 1);
-
-    toggleModalVisibility();
-    toast.success("User deleted sucessfully");
+  const deleteUser = async () => {
+    try {
+      await removeUser({ id: userId });
+      toggleModalVisibility();
+      toast.success("User deleted sucessfully");
+    } catch (err) {}
   };
 
   return (
     <UserContext.Provider
       value={{
+        users,
         userId,
         modalIsOpen,
         toggleModalVisibility,
+        registerUser,
         updateUser,
         deleteUser,
       }}

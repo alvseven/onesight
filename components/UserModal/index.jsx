@@ -1,25 +1,24 @@
 import { useState } from "react";
 
-import { AiOutlineClose } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { AiOutlineClose } from "react-icons/ai";
 
 import { useUserContext } from "../../context";
 
 import { updateUserSchema } from "../../schemas";
-import { users } from "../../utils/users";
 
 import styles from "./styles.module.sass";
 
 const UserModal = () => {
   const [submitType, setSubmitType] = useState(null);
 
-  const { userId, toggleModalVisibility, deleteUser, updateUser } =
+  const { users, userId, toggleModalVisibility, deleteUser, updateUser } =
     useUserContext();
 
   const user = users.find((user) => user.id === userId);
 
-  const { id, name, email, contact, createdAt, updatedAt } = user;
+  const { name, email, contact, createdAt, updatedAt } = user;
 
   const {
     register,
@@ -44,7 +43,7 @@ const UserModal = () => {
       <div className={styles.modalContainer}>
         <form className={styles.form} onSubmit={handleSubmit(handleUserSubmit)}>
           <div className={styles.closeModalContainer}>
-            <h3>Costumer information</h3>
+            <h3>User information</h3>
             <button onClick={toggleModalVisibility}>
               <AiOutlineClose size="16px" />
             </button>
@@ -64,7 +63,7 @@ const UserModal = () => {
             type="email"
             id="email"
             defaultValue={email}
-            {...register("email")}
+            disabled
           />
           <span>{errors.email?.message}</span>
 
