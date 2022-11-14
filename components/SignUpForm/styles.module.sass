@@ -4,7 +4,7 @@
     justify-content: center
     width: 100%
     max-width: 100%
-    margin-top: 0.8rem
+    margin-top: 1.2rem
 
 .form 
     background: linear-gradient(90deg, rgba(12,12,75,1) 6%, rgba(9,10,62,1) 85%)
@@ -19,6 +19,9 @@
     border-radius: 12px
     border: 2px solid #A6CFD5
 
+    @media (max-width: 1024px)
+    width: 90%
+
 
     h3
         font-family: 'Nunito', sans-serif
@@ -28,26 +31,16 @@
 
     label
         font-family: 'Roboto', sans-serif
-        font-size: 1rem
+        font-size: clamp(0.8rem, 0.5rem, 1.1rem)
         color: #d3e0f0 
         font-weight: 500
 
+
     span
         font-family: 'Inter', sans-serif
-        font-size: 0.7rem
+        font-size: clamp(0.4rem, 0.7rem, 0.8rem)
         color: #ff6961
         padding-left: 12px
-
-    a
-        margin-bottom: 6px
-        font-family: 'Roboto', sans-serif
-        font-size: 1rem
-        color: #A6CFD5
-        text-decoration: none
-        text-align: center
-        &:hover
-            transition: 0.5s
-            color: #02A9EA
 
     button 
         width: 50%
@@ -57,7 +50,7 @@
         border-radius: 16px
         font-family: 'Nunito', sans-serif
         font-size: 1.2rem
-        margin: auto
+        margin: 1rem auto 0
         &:hover
             transition: 0.4s
             background: #031D44
@@ -71,7 +64,7 @@
     border-radius: 8px
     outline: 0
 
-.admCheck
+
     display: flex
     align-items: center
     
