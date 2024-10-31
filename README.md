@@ -1,4 +1,4 @@
-# **Welcome! This is a technical test project for onesight**
+# **Welcome! This is a project for onesight**
 
 ## Technologies
 
